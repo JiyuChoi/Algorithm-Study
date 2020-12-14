@@ -10,7 +10,7 @@ for i in range(N):
     for j in range(N):
         # 치킨가게 좌표 저장
         if city[i][j] == 2:
-            chicken.append([i, j])장
+            chicken.append([i, j])
         # 집 좌표 저장
         if city[i][j] == 1:
             home.append([i, j])
