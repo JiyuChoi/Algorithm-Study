@@ -18,3 +18,21 @@ def solution(numbers, target):
 
     dfs(0, 0)
     return answer
+
+
+# 중청함수 사용하지 않고 풀이
+answer = 0
+
+def dfs(l, numbers, target, sum):
+    global answer
+    if l == len(numbers):
+        if sum == target:
+            answer += 1
+    else:
+        dfs(l + 1, numbers, target, sum + numbers[l])
+        dfs(l + 1, numbers, target, sum - numbers[l])
+
+def solution(numbers, target):
+    global answer
+    dfs(0, numbers, target, 0)
+    return answer
