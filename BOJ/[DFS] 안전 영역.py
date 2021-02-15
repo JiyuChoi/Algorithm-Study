@@ -1,6 +1,6 @@
 import sys
 # 재귀 한도 설정
-sys.setrecursionlimit(10**6)
+sys.setrecursionlimit(10000)
 
 # 방향 벡터 설정
 dx = [1, 0, -1, 0]
