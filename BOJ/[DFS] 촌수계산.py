@@ -1,20 +1,20 @@
 from collections import deque
 import sys
 
-def bfs(v, target):
+def bfs(p, target):
     cnt = 0
-    q = deque([[v, cnt]])
+    q = deque([[p, cnt]])
     while q:
         value = q.popleft()
-        v = value[0]
+        p = value[0]
         cnt = value[1]
-        if v == target:
+        if p == target:
             return cnt
 
-        if not visited[v]:
+        if not visited[p]:
             cnt += 1
-            visited[v] = 1
-            for e in link[v]:
+            visited[p] = 1
+            for e in link[p]:
                 if not visited[e]:
                     q.append([e, cnt])
     return -1
