@@ -36,12 +36,15 @@ s = input()
 l = len(s)
 answer = l
 
+# 1개부터 압축 단위를 늘려가며 확인
 for i in range(1, l // 2 + 1):
     res = ""
     cnt = 1
     for j in range(0, l, i):
+        # 이전 상태와 동일하다면 압축 횟수 증가
         if s[j:j + i] == s[j + i: j + 2 * i]:
             cnt += 1
+        # 더이상 압축하지 못한다면
         else:
             if cnt != 1:
                 res += str(cnt) + s[j:j + i]
@@ -49,12 +52,14 @@ for i in range(1, l // 2 + 1):
                 res += s[j:j + i]
             cnt = 1
 
+    # 남아 있는 문자열 처리
     # 한줄로 정리: res += str(cnt) + s[j + i: j + 2 * i] if cnt != 1 else s[j + i: j + 2 * i]
     if cnt != 1:
         res += str(cnt) + s[j + i: j + 2 * i]
     else:
         res += s[j + i: j + 2 * i]
 
+    # 압축된 문자열 길이가 짧은 것이 정답
     if answer > len(res):
         answer = len(res)
 
