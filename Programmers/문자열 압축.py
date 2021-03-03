@@ -28,3 +28,37 @@ def solution(s):
 s = "abcabcabcabcdededededede"
 print(solution(s))
 '''
+
+
+# 다시 푼 풀이
+# 0 부터 비교한 방식 위에 풀이가 더 간결함!
+s = input()
+l = len(s)
+answer = l
+
+for i in range(1, l // 2 + 1):
+    res = ""
+    cnt = 1
+    for j in range(0, l, i):
+        if s[j:j + i] == s[j + i: j + 2 * i]:
+            cnt += 1
+        else:
+            if cnt != 1:
+                res += str(cnt) + s[j:j + i]
+            else:
+                res += s[j:j + i]
+            cnt = 1
+
+    # 한줄로 정리: res += str(cnt) + s[j + i: j + 2 * i] if cnt != 1 else s[j + i: j + 2 * i]
+    if cnt != 1:
+        res += str(cnt) + s[j + i: j + 2 * i]
+    else:
+        res += s[j + i: j + 2 * i]
+
+    if answer > len(res):
+        answer = len(res)
+
+print(answer)
+
+
+
