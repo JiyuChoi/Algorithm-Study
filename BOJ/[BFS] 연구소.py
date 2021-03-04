@@ -32,11 +32,16 @@ def wall(s, l):
     if l == 3:
         virus()
         return
+
     else:
         for i in range(s, n*m):
             x = i // m
             y = i % m
 
+            if lab[x][y] == 0:
+                lab[x][y] = 1
+                wall(i + 1, l + 1)
+                lab[x][y] = 0
 
 
 n, m = map(int, sys.stdin.readline().split())
