@@ -37,15 +37,60 @@ def wall(s, l):
             x = i // m
             y = i % m
 
-            if lab[x][y] == 0:
-                lab[x][y] = 1
-                wall(i+1, l+1)
-                lab[x][y] = 0
 
 
 n, m = map(int, sys.stdin.readline().split())
 lab = [list(map(int, sys.stdin.readline().split())) for _ in range(n)]
+temp = [[0]*m for _ in range(n)]
 d = deque()
 
 wall(0, 0)
+print(res)
+
+
+
+# 밑의 방식을 이용하면 답은 나오지만 시간 초과
+def virus(i,j):
+    d.append((i,j))
+    while d:
+        x, y = d.popleft()
+        for i in range(4):
+            nx = x + dx[i]
+            ny = y + dy[i]
+            if 0<=nx<n and 0<=ny<m and not temp[nx][ny]:
+                temp[nx][ny] = 2
+                d.append((nx, ny))
+                
+def get_score():
+    score = 0
+    for x in temp:
+        score += x.count(0)
+    return score
+
+def dfs(cnt):
+    global res
+    if cnt == 3:
+        for i in range(n):
+            for j in range(m):
+                temp[i][j] = lab[i][j]
+
+        for i in range(n):
+            for j in range(m):
+                if temp[i][j] == 2:
+                    virus(i,j)
+
+        res = max(get_score(), res)
+        return
+
+    else:
+        for i in range(n):
+            for j in range(m):
+                if not lab[i][j]:
+                    lab[i][j] = 1
+                    cnt += 1
+                    dfs(cnt)
+                    lab[i][j] = 0
+                    cnt -= 1
+
+dfs(0)
 print(res)
