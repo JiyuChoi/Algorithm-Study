@@ -20,19 +20,22 @@ print(solution(5, [2,1,2,6,2,4,3,3] ))
 
 # 리스트 이용 풀이
 def solution(N, stages):
-    fail = [0]*(N+1)
+    answer = []
     l = len(stages)
 
-    for i in range(0, N+1):
+    for i in range(1, N+1):
         num = stages.count(i)
+
+        # 실패율 계산
         if l != 0:
-            fail[i] = (i, num/l)
+            answer.append(i, num/l)
             l -= num
         else:
-            fail[i] = (i, 0)
+            answer.append(i, 0)
 
-    fail = sorted(fail[1:], key=lambda x: -x[1])
+    # 실패율이 높은 순으로 정렬
+    answer = sorted(answer[1:], key=lambda x: -x[1])
 
-    answer = [i[0] for i in fail]
+    answer = [i[0] for i in answer]
 
     return answer
