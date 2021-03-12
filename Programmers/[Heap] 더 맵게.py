@@ -41,3 +41,24 @@ def solution(scoville, K):
 
     return answer
 '''
+
+''' 210313 풀이
+import heapq as hq
+
+def solution(scoville, K):
+    h = []
+    answer = 0
+    for value in scoville:
+        hq.heappush(h, value)
+
+    while True:
+        first = hq.heappop(h)
+        if first >= K:
+            return answer
+        if not len(h):
+            return -1
+        second = hq.heappop(h)
+        mixed = first + second * 2
+        hq.heappush(h, mixed)
+        answer += 1
+'''
