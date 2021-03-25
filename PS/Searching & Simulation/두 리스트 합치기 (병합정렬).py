@@ -3,7 +3,7 @@ l1 = list(map(int, input().split()))
 m = int(input())
 l2 = list(map(int, input().split()))
 
-# O(n) 풀이
+# Merge Sort: O(n) 풀이
 res = []
 i = j = 0
 
