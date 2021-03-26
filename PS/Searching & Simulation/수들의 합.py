@@ -6,6 +6,7 @@ i = j = 0
 
 while True:
     if tot < m:
+        # 끝점이 n보다 작아야 되는 조건 필요!
         if j < n:
             tot += num[j]
             j += 1
