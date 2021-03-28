@@ -3,6 +3,7 @@ num = list(map(int, input().split()))
 avg = round(sum(num)/n)
 max_value = float("inf")
 
+# idx, num 둘다 필요하므로 enumerate로 풀기!
 for idx, x in enumerate(num):
     d = abs(x - avg)
     if d < max_value:
