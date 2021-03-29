@@ -1,7 +1,7 @@
 n, m = map(int, input().split())
 number = sorted(list(map(int, input().split())))
 
-# 이분탐색 => O(logN)
+# 이분탐색 => O(n)
 s = 0
 e = n - 1
 
@@ -15,5 +15,11 @@ while s <= e:
     else:
         e = mid - 1
 
-# 선형탐색 => O(nlogN)
+# 선형탐색2 => O(n)
 print(number.index(m)+1)
+
+# 선형탐색
+for idx, num in enumerate(number):
+    if num == m:
+        print(idx+1)
+        break
