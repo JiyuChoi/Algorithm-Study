@@ -13,3 +13,17 @@ for i in range(3):
             cnt += 1
 
 print(cnt)
+
+
+for n in range(7):
+    for i in range(3):
+        row = col = []
+        for j in range(i, i+5):
+            row.append(board[n][j])
+            col.append(board[j][n])
+        if row == row[::-1]:
+            cnt += 1
+        if col == col[::-1]:
+            cnt += 1
+
+print(cnt)
