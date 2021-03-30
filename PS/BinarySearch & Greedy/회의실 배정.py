@@ -7,10 +7,11 @@ time = sorted([list(map(int, input().split())) for _ in range(n)], key=lambda x:
 end_time = time[0][1]
 cnt = 1
 
-for x in time[1:]:
+# 시작:s, 종료:e
+for s, e in time[1:]:
     # 다음회의 시작이 이전회의 종료보다 늦다면 카운트
-    if x[0] >= end_time:
+    if s >= end_time:
         cnt += 1
-        end_time = x[1]
+        end_time = e
 
 print(cnt)
