@@ -13,3 +13,13 @@ while True:
         if cur[0] == m:
             print(cnt)
             break
+
+    # if d[0][1] == max(d, key=lambda x: x[1])[1]:
+    #     cur = d.popleft()
+    #     cnt += 1
+    #     if cur[0] == m:
+    #         print(cnt)
+    #         break
+    # else:
+    #     cur = d.popleft()
+    #     d.append(cur)
