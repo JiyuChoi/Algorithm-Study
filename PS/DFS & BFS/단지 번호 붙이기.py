@@ -36,3 +36,28 @@ for i in range(n):
 print(len(res))
 for x in sorted(res):
     print(x)
+
+
+# dfs 풀이
+def dfs(x, y):
+    global cnt
+    for i in range(4):
+        nx = x + dx[i]
+        ny = y + dy[i]
+        if 0<=nx<n and 0<=ny<n and board[nx][ny]:
+            board[nx][ny] = 0
+            cnt += 1
+            dfs(nx, ny)
+
+for i in range(n):
+    for j in range(n):
+        # 집이 있는 곳이라면 dfs 실행
+        if board[i][j] == 1:
+            board[i][j] = 0
+            cnt = 1
+            dfs(i, j)
+            res.append(cnt)
+
+print(len(res))
+for x in sorted(res):
+    print(x)
