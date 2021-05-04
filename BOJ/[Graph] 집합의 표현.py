@@ -3,7 +3,7 @@ sys.setrecursionlimit(10**9)
 
 n, m = map(int, sys.stdin.readline().rstrip().split())
 
-parent = [-1 for _ in range(n+1)]
+parent = [i for i in range(n+1)]
 
 def union(a, b):
     a = find(a)
@@ -12,7 +12,7 @@ def union(a, b):
         parent[a] = b
 
 def find(x):
-    if parent[x] < 0:
+    if parent[x] == x:
         return x
     else:
         parent[x] = find(parent[x])
