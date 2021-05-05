@@ -66,4 +66,26 @@ for i in range(1, l // 2 + 1):
 print(answer)
 
 
+# 5/5 복기하고자 다시 풀이
+s = input()
+l = len(s)
+min_value = float("inf")
 
+for i in range(1, l // 2 + 1):
+    prev = s[:i]
+    answer = ''
+    cnt = 1
+    for j in range(i, l + i, i):
+        if s[j:j + i] == prev:
+            cnt += 1
+        else:
+            if cnt == 1:
+                answer += prev
+            else:
+                answer += (str(cnt) + prev)
+            prev = s[j:j + i]
+            cnt = 1
+    if len(answer) < min_value:
+        min_value = len(answer)
+
+print(min_value)
