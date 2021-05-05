@@ -1,3 +1,4 @@
+# dfs 이용 풀이
 def dfs(l):
     if l == k:
         answer = ''
@@ -22,4 +23,13 @@ ch = [0]*n
 ans = set()
 
 dfs(0)
+print(len(ans))
+
+
+# permutations 라이브러리
+from itertools import permutations
+
+for i in permutations(num, k):
+    ans.add(''.join(map(str, i)))
+
 print(len(ans))
