@@ -1,30 +1,14 @@
-for t in range(1, int(input())+1):
+for t in range(1, int(input()) + 1):
     n, k = map(int, input().split())
-    board = [list(map(int, input().split())) for _ in range(n)]
+    board1 = [list(map(int, input().split())) for _ in range(n)]
+    board2 = list(map(list, zip(*board1)))  # 배열 행과 열 전환
     cnt = 0
-    # 행 기준 탐색
-    for i in range(n):
-        tot = 0
-        for j in range(n):
-            if board[i][j] == 0:
-                if tot == k:
+
+    for b in [board1, board2]:
+        for x in b:
+            str_list = ''.join(map(str, x)).split('0')
+            for char in str_list:
+                if char == '1'*k:
                     cnt += 1
-                tot = 0
-            else:
-                tot += 1
-        if tot == k:
-            cnt += 1
-    # 열 기준 탐색
-    for i in range(n):
-        tot = 0
-        for j in range(n):
-            if board[j][i] == 0:
-                if tot == k:
-                    cnt += 1
-                tot = 0
-            else:
-                tot += 1
-        if tot == k:
-            cnt += 1
 
     print('#{} {}'.format(t, cnt))
