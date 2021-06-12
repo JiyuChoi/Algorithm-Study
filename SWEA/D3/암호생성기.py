@@ -3,15 +3,16 @@ for _ in range(10):
     n = int(input())
     d = deque(list(map(int, input().split())))
     print(f'#{n}', end=" ")
-    flag = False
-    while 0 not in d:
-        if flag:
+
+    i = 1
+    while True:
+        if i == 6:
+            i = 1
+        num = d.popleft()-i
+        if num <= 0:
+            d.append(0)
             break
-        for i in range(5):
-            num = d.popleft()-(i+1)
-            if num <= 0:
-                flag = True
-                d.append(0)
-                break
-            d.append(num)
+        d.append(num)
+        i += 1
+
     print(*d)
