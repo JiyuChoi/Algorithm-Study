@@ -16,21 +16,14 @@
 
 from math import ceil
 def solution(progress, speeds):
-    days = []
+    days = [ceil((100-p)/s) for p, s in zip(progress, speeds)]
+    front = 0
     res = []
-    for p, s in zip(progress, speeds):
-        day = ceil((100-p)/s)
-        days.append(day)
-    prev = days[0]
-    cnt = 0
-    for d in days:
-        if prev >= d:
-            cnt += 1
-        else:
-            res.append(cnt)
-            prev = d
-            cnt = 1
-    res.append(cnt)
+    for idx in range(len(days)):
+        if days[front] < days[idx]:
+            res.append(idx-front)
+            front = idx
+    res.append(len(days)-front)
     return res
 
 print(solution([93, 20, 55], [1, 30, 5]))
