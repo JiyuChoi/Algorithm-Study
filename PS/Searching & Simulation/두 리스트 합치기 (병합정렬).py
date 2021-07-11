@@ -49,4 +49,4 @@ while i < n and j < m:
 
 res += mlist[j:]
 
-print(res)
+print(*res)
