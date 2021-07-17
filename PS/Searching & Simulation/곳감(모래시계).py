@@ -25,6 +25,9 @@
 #
 # print(res)
 
+
+from collections import deque
+
 n = int(input())
 board = [list(map(int, input().split())) for _ in range(n)]
 m = int(input())
@@ -35,7 +38,7 @@ for _ in range(m):
             board[r-1].append(board[r-1].pop())
     else:
         for _ in range(cnt):
-            board[r-1].append(board[r-1].pop(0))
+            board[r-1].append(board[r-1].popleft()) #pop(0)보다 성능 좋음
 
 s = 0
 e = n
