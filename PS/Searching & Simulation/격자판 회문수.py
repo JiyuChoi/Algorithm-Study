@@ -34,9 +34,9 @@ cnt = 0
 for i in range(7):
     for j in range(3):
         row, col = [], []
-        for k in range(5):
-            row.append(board[i][j+k])
-            col.append(board[j+k][i])
+        for k in range(5): #for k in range(j, j+5):
+            row.append(board[i][j+k]) #row.append(board[i][k])
+            col.append(board[j+k][i]) #col.append(board[k][j])
         if row == row[::-1]:
             cnt += 1
         if col == col[::-1]:
