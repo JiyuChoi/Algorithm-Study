@@ -42,9 +42,9 @@ for i in range(9):
 
 for i in range(0, 9, 3):
     ch_box = [0] * 10
-    for j in range(i, i+3):
-        for k in range(i, i+3):
-            ch_box[board[j][k]] += 1
+    for j in range(3):
+        for k in range(3):
+            ch_box[board[i+j][i+k]] += 1
     if sum(ch_box) != 9:
         flag = False
         break
