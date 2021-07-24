@@ -23,4 +23,4 @@
 #
 # print(res)
 
-n, c = map(int, input().split())
+# 7/23 다시!
