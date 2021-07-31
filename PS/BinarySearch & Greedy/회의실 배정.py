@@ -17,14 +17,10 @@
 # print(cnt)
 
 n = int(input())
-time = []
-for _ in range(n):
-    t1, t2 = map(int, input().split())
-    time.append([t1, t2])
-    time.sort(key=lambda x: (x[1], x[0]))
+time = sorted([map(int, input().split()) for _ in range(n)], key=lambda x: (x[1], x[0]))
 
-end_time = time[1][0]
 cnt = 1
+end_time = time[0][1]
 
 for s, e in time[1:]:
     if s >= end_time:
