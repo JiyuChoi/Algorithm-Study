@@ -8,7 +8,7 @@
 #     # 만약 몸무게가 기준보다 크다면 cnt += 1
 #     if p[1] > standard:
 #         cnt += 1
-#     standard = p[1]
+#         standard = p[1]
 #
 # print(cnt)
 
@@ -20,6 +20,6 @@ target = people[0][1]
 for h, w in people[1:]:
     if w > target:
         cnt += 1
-    target = w
+        target = w
 
 print(cnt)
