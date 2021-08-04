@@ -16,3 +16,7 @@ while people:
         cnt += 1
 
 print(cnt)
+
+
+n, m = map(int, input().split())
+people = sorted(list(map(int, input().split())))
