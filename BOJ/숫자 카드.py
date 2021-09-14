@@ -18,3 +18,24 @@ def binary_search(num_n, target, s, e):
 
 for i in num_m:
     print(binary_search(num_n, i, 0, n-1), end=" ")
+
+
+# 9/14
+n = int(input())
+arr_n = sorted(list(map(int, input().split())))
+m = int(input())
+arr_m = list(map(int, input().split()))
+
+for i in arr_m:
+    s, e = 0, n-1
+    while s <= e:
+        mid = (s+e)//2
+        if i == arr_n[mid]:
+            print(1, end=" ")
+            break
+        elif i > arr_n[mid]:
+            s = mid + 1
+        else:
+            e = mid - 1
+    else:
+        print(0, end=" ")
