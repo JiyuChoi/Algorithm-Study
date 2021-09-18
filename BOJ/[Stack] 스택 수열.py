@@ -29,3 +29,5 @@ if tmp == 1:
     print("NO")
 else:
     print("\n".join(ans))
+
+# 9/18 실패
