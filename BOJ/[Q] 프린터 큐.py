@@ -39,13 +39,23 @@ for _ in range(int(input())):
     for idx, v in enumerate(arr):
         d.append([idx, v])
 
+    # while True:
+    #     now = d.popleft()
+    #     if any(now[1] < x[1] for x in d):
+    #         d.append(now)
+    #     else:
+    #         cnt += 1
+    #         if now[0] == m:
+    #             print(cnt)
+    #             break
+
     while True:
-        now = d.popleft()
-        if any(now[1] < x[1] for x in d):
-            d.append(now)
-        else:
+        if max(d, key=lambda x: x[1])[1] == d[0][1]:
             cnt += 1
-            if now[0] == m:
+            if d[0][0] == m:
                 print(cnt)
                 break
-
+            else:
+                d.popleft()
+        else:
+            d.append(d.popleft())
