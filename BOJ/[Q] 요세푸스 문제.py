@@ -20,7 +20,7 @@ num = 0
 for _ in range(n):
     num += k-1
     if num >= len(d):
-        num %= len(d)%num
+        num %= len(d)
     res.append(str(d.pop(num)))
 
 print("<", ", ".join(res), ">", sep="")
