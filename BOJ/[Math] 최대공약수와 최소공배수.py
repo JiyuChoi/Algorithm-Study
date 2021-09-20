@@ -11,3 +11,11 @@ def gcd(n, m):
     while m:
         n, m = m, n % m
         return n
+
+
+# 9/20
+from math import gcd
+
+x, y = map(int, input().split())
+print(gcd(x, y))
+print(x*y//gcd(x, y))
