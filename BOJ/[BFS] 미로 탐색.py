@@ -1,7 +1,7 @@
 import sys
 from collections import deque
 
-# BFS 풀이 (1)
+# BFS 풀이 (1) (시간이 적게 걸림)
 miro = []
 d = deque()
 
@@ -37,7 +37,7 @@ else:
 
 
 
-# BFS 풀이 (2)
+# BFS 풀이 (2) (135ms 시간이 조금 더 걸림)
 n, m = map(int, input().split())
 ground = [list(map(int,input())) for _ in range(n)]
 d = deque()
