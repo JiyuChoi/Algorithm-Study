@@ -5,7 +5,7 @@ def dfs(x):
     global res
     visited[x] = 1
     cycle.append(x)
-    number = ch[x] # 다음 방문할 정ㅇ점
+    number = ch[x] # 다음 방문할 정점
 
     if visited[number]:
         if number in cycle:
