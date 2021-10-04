@@ -47,3 +47,44 @@ res.sort()
 print(*res)
 
 
+# 10/4 bfs 풀
+from collections import deque
+import sys
+
+def bfs(i, j):
+    global cnt
+    d.append((i, j))
+    board[i][j] = 1
+    while d:
+        x, y = d.popleft()
+        for i in range(4):
+            nx = x + dx[i]
+            ny = y + dy[i]
+            if 0<=nx<m and 0<=ny<n and not board[nx][ny]:
+                board[nx][ny] = 1
+                cnt += 1
+                d.append((nx, ny))
+
+
+m, n, k = map(int, sys.stdin.readline().split())
+board = [[0]*n for _ in range(m)]
+for _ in range(k):
+    x1, y1, x2, y2 = map(int, sys.stdin.readline().split())
+    for x in range(y1, y2):
+        for y in range(x1, x2):
+            board[x][y] = 1
+
+dx = [1, 0, -1, 0]
+dy = [0, 1, 0, -1]
+d = deque()
+res = []
+
+for i in range(m):
+    for j in range(n):
+        if not board[i][j]:
+            cnt = 1
+            bfs(i, j)
+            res.append(cnt)
+
+print(len(res))
+print(*sorted(res))
