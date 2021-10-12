@@ -17,3 +17,15 @@ for s, e in timetable:
         end_time = e
 
 print(cnt)
+
+# 10/12
+times = sorted([list(map(int, input().split())) for _ in range(n)], key=lambda x: (x[1], x[0]))
+end_time = times[0][1]
+
+cnt = 1
+for s, e in times[1:]:
+    if s >= end_time:
+        end_time = e
+        cnt += 1
+
+print(cnt)
