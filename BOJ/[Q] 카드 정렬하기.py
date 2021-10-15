@@ -25,3 +25,23 @@ while len(h) != 1:
     res += card_sum
 
 print(res)
+
+
+# 10/15
+import sys
+import heapq as hq
+
+h = []
+n = int(sys.stdin.readline())
+res = 0
+
+for _ in range(n):
+    hq.heappush(h, int(sys.stdin.readline()))
+
+while len(h) != 1:
+    first = hq.heappop(h)
+    second = hq.heappop(h)
+    hq.heappush(h, first+second)
+    res += first+second
+
+print(res)
