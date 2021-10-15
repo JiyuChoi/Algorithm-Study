@@ -15,3 +15,17 @@ for _ in range(n):
 
     elif str(number).isdigit():
         hq.heappush(h, number)
+
+
+# 10/15 보다 간결해진 코드!
+import heapq as hq
+import sys
+
+h = []
+n = int(sys.stdin.readline())
+for _ in range(n):
+    num = int(sys.stdin.readline())
+    if num == 0:
+        print(hq.heappop(h) if h else 0)
+    else:
+        hq.heappush(h, num)
