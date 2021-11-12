@@ -5,12 +5,14 @@ def bfs():
         now = q.popleft()
         if now == g:
             return True
+        # for next in (now + u, now - d):
+        #     if 0 < next <= f and not dis[next]: // 이 방법도 가능!
         up = now + u
         down = now - d
         if up <= f and not dis[up]:
             dis[up] = dis[now] + 1
             q.append(up)
-        if down > 0 and not dis[down]:
+        if down >= 0 and not dis[down]:
             dis[down] = dis[now] + 1
             q.append(down)
     return False
