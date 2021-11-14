@@ -1,4 +1,6 @@
 from collections import deque
+import sys
+input = sys.stdin.readline
 
 # 오른쪽 확인
 def check_right(s, nd):
@@ -28,7 +30,7 @@ def check_left(s, nd):
 
 t = [[]]
 for _ in range(4):
-    t.append(deque(map(int, input())))
+    t.append(deque(map(int, input().rstrip())))
 
 k = int(input())
 for _ in range(k):
