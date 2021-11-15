@@ -29,7 +29,7 @@ for _ in range(t):
         for j in range(c):
             if a[i][j] == -1:
                 tmp[i][j] = -1
-            elif a[i][j] != 0:
+            elif a[i][j] != 0: # 한 번 돈 것을 다시 mess에 추가하는 로직으로 수정
                 mess.append((i,j))
 
 
