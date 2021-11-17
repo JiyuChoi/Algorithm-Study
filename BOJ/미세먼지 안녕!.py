@@ -57,7 +57,7 @@ def cleaner(start, direct):
 for _ in range(t):
     spread()
     cleaner(ac[0], -1) #반시계
-    cleaner(ac[1], 1) #시
+    cleaner(ac[1], 1) #시계
 
 a[ac[0]][0], a[ac[1]][0] = 0, 0
 print(sum(map(sum, a)))
