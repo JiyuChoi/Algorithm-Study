@@ -7,7 +7,7 @@ def watch(x, y, d, graph):
         while True:
             nx += dx[i]
             ny += dy[i]
-            if 0<=nx<n and 0<=ny<m and graph[nx][ny] != 6:
+            if 0 <= nx < n and 0 <= ny < m and graph[nx][ny] != 6:
                 if graph[nx][ny] == 0:
                     graph[nx][ny] = "#"
             else:
