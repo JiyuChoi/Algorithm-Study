@@ -44,6 +44,7 @@ direction = [[],
 office = []
 cctv = []
 res = float("inf")
+
 for i in range(n):
     arr = list(map(int, input().split()))
     office.append(arr)
