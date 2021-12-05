@@ -1,11 +1,8 @@
-n = int(input())
-num = 666
-cnt = 0
-
-while True:
-    if "666" in str(num):
-        cnt += 1
-    if cnt == n:
-        print(num)
-        break
-    num += 1
+def solution(data):
+    pattern = [data[0]]
+    for i in range(1, len(data)):
+        if data[i] == pattern[i % len(pattern)]:
+            pattern.append(data[i])
+        else:
+            pattern = data[: i + 1]
+    return pattern[len(data) % len(pattern) + 1]
