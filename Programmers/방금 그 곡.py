@@ -9,9 +9,7 @@ def change(melody):
 def solution(m, musicinfos):
     answer = []
     m = change(m)
-    idx = 0
-    for info in musicinfos:
-        idx += 1
+    for idx, info in enumerate(musicinfos):
         s, e, music, melody = info.split(",")
         shour, smin = map(int, s.split(":"))
         ehour, emin = map(int, e.split(":"))
