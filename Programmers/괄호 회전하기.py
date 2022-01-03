@@ -2,27 +2,28 @@ from collections import deque
 
 
 def check(s):
-    dic = {"]": "[", "}": "{", ")": "("}
     stack = []
-    for x in s:
-        if x == "]" or x == "}" or x == ")":
+    for char in s:
+        if char in ("(", "[", "{"):
+            stack.append(char)
+        else:
             if not stack:
                 return False
-            else:
-                if stack.pop() != dic[x]:
-                    return False
-        else:
-            stack.append(x)
-    return True
+            if char == ")" and stack.pop() != "(":
+                return False
+            if char == "}" and stack.pop() != "{":
+                return False
+            if char == "]" and stack.pop() != "[":
+                return False
+    if stack:
+        return False
+    else:
+        return True
 
 
 def solution(s):
     answer = 0
     q = deque(list(s))
-
-    if len(s) % 2 != 0:
-        return 0
-
     for _ in range(len(s)):
         if check(q):
             answer += 1
