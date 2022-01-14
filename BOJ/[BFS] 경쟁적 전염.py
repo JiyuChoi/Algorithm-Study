@@ -38,25 +38,34 @@
 #
 # print(graph[target_x-1][target_y-1])
 
-
-
+1/14
 from collections import deque
 
 n, k = map(int, input().split())
 board = [list(map(int, input().split())) for _ in range(n)]
-s, x, y = map(int, input().split())
+s, target_x, target_y = map(int, input().split())
 
-q = deque([])
+dx = [0, 1, 0, -1]
+dy = [1, 0, -1, 0]
+
+virus = []
 for i in range(n):
     for j in range(n):
-        if not board[i][j]:
-            q.append((i, j. board[i][j]))
+        if board[i][j] != 0:
+            virus.append((i, j, 0, board[i][j]))
 
+virus.sort(key=lambda x : x[3])
+q = deque(virus)
 
+while q:
+    x, y, cnt, kind = q.popleft()
+    if s == cnt:
+        break
+    for i in range(4):
+        nx = x + dx[i]
+        ny = y + dy[i]
+        if 0<=nx<n and 0<=ny<n and not board[nx][ny]:
+            board[nx][ny] = kind
+            q.append((nx, ny, cnt+1, kind))
 
-
-
-
-
-
-
+print(board[target_x-1][target_y-1])
