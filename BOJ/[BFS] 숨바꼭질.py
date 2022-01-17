@@ -28,15 +28,15 @@ from collections import deque
 n, k = map(int, input().split())
 
 max_v = 100001
-dis = [0]*max_v
-d = deque([n])
+dis = [-1]*max_v
+dis[n] = 0
+q = deque([n])
 
-while d:
-    now = d.popleft()
-    if now == k:
-        print(dis[k])
-        break
-    for x in (now+1, now-1, now*2):
-        if 0 <= x < max_v and dis[x] == 0:
-            d.append(x)
-            dis[x] = dis[now] + 1
+while q:
+    now = q.popleft()
+    for next in now-1, now+1, now*2:
+        if 0 <= next < max_v and dis[next] == -1:
+            q.append(next)
+            dis[next] = dis[now] + 1
+
+print(dis[k])
