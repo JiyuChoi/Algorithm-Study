@@ -116,8 +116,7 @@ def spread():
             if 0<=nx<n and 0<=ny<m and not lab[nx][ny]:
                 v.append((nx, ny))
                 lab[nx][ny] = 2
-    for l in lab:
-        cnt += l.count(0)
+    cnt = sum(l.count(0) for l in lab)
     return cnt
 
 n, m = map(int, sys.stdin.readline().split())
@@ -145,7 +144,6 @@ for p in permutations(blank, 3):
         lab[x][y] = 1
 
     cnt = spread()
-    if cnt > answer:
-        answer = cnt
+    answer = max(cnt, answer)
 
 print(answer)
