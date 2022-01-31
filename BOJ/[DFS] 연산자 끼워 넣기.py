@@ -86,3 +86,35 @@
 #
 # print(max(tot))
 # print(min(tot))
+
+import sys
+input = sys.stdin.readline
+
+def dfs(l, tot):
+    if l == n:
+        res.append(tot)
+        return
+    else:
+        for i in range(4):
+            if eq[i] > 0:
+                eq[i] -= 1
+                if i == 0:
+                    dfs(l+1, tot+arr[l])
+                elif i == 1:
+                    dfs(l+1, tot-arr[l])
+                elif i == 2:
+                    dfs(l+1, tot*arr[l])
+                else:
+                    dfs(l+1, int(tot/arr[l])) # tot//arr[l]하면 틀림!
+                eq[i] += 1
+
+
+
+n = int(input())
+arr = list(map(int, input().split()))
+eq = list(map(int, input().split()))
+res = []
+
+dfs(1, arr[0])
+print(max(res))
+print(min(res))
