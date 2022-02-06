@@ -1,6 +1,12 @@
 import math
 from collections import defaultdict
 
+def fee_cal(fees, t):
+    s_time, s_fee, e_time, e_fee = fees
+    if t < s_time:
+        return s_fee
+    return s_fee + math.ceil((t - s_time) / e_time) * e_fee
+
 def time_cal(out_time, in_time):
     oh, om = map(int, out_time.split(":"))
     ih, im = map(int, in_time.split(":"))
@@ -24,14 +30,9 @@ def solution(fees, records):
     for n, t in dic.items():
         tot = time_cal("23:59", t)
         dic2[n] += tot
-    
-    s_time, s_fee, e_time, e_fee = fees 
+
     for n, t in dic2.items():
-        total_fee = s_fee
-        t -= s_time
-        if t > 0:
-            total_fee += math.ceil(t/e_time) * e_fee
-        dic2[n] = total_fee
+        dic2[n] = fee_cal(fees, t)
         
     for x in sorted(dic2.items(), key=lambda x: x[0]):
         answer.append(x[1])
