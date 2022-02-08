@@ -29,24 +29,30 @@
 #
 #     print(n-len(res))
 
+import sys
+sys.setrecursionlimit(1000000)
+
 def dfs(v):
     global res
-    cycle.append(v)
     visited[v] = 1
-    next = student[v]
-    if next in cycle:
-        res += cycle[cycle.index(next):] #여기가 핵심포인트!
-    if not visited[next]:
-        dfs(next)
-    return res
+    cycle.append(v)
+    nx = link[v]
+    if 0 < nx <= n and visited[nx]:
+        if nx in cycle:
+            res += cycle[cycle.index(nx):]
+        return
+    else:
+        dfs(nx)
 
 for _ in range(int(input())):
     n = int(input())
-    student = [0] + list(map(int, input().split()))
-    visited = [1] + [0]*n
+    link = [0] + list(map(int, input().split()))
+    visited = [1] + [0] * n
     res = []
+
     for i in range(1, n+1):
         if not visited[i]:
             cycle = []
             dfs(i)
+
     print(n-len(res))
