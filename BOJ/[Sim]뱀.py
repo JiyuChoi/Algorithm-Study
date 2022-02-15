@@ -48,4 +48,24 @@ def find(xx, yy, i):
 print(find(0,0,0))
 
 # 220214
+def find(x, y, i):
 
+
+n = int(input())
+board = [[0]*(n+1) for _ in range(n+1)]
+
+k = int(input())
+for _ in range(k):
+    i, j = map(int, input().split())
+    board[i][j] = 2
+
+rotation = []
+l = int(input())
+for _ in range(l):
+    x, c = map(int, input().split())
+    rotation.append((x, c))
+
+dx = [0, 1, 0, -1]
+dy = [1, 0, -1, 0]
+
+find(1, 1, 0)
