@@ -1,5 +1,4 @@
 def solution(citations):
-    new = []
     citations.sort()
     l = len(citations)
     for i in range(l):
