@@ -39,16 +39,6 @@ for _ in range(int(input())):
     for idx, v in enumerate(arr):
         d.append([idx, v])
 
-    # while True:
-    #     now = d.popleft()
-    #     if any(now[1] < x[1] for x in d):
-    #         d.append(now)
-    #     else:
-    #         cnt += 1
-    #         if now[0] == m:
-    #             print(cnt)
-    #             break
-
     while True:
         if max(d, key=lambda x: x[1])[1] == d[0][1]:
             cnt += 1
@@ -59,3 +49,24 @@ for _ in range(int(input())):
                 d.popleft()
         else:
             d.append(d.popleft())
+
+
+from collections import deque
+T = int(input())
+
+for i in range(T):
+    n, m = map(int, input().split())
+    arr = list(map(int, input().split()))
+    prior = deque([(idx, num) for idx, num in enumerate(arr)])
+
+    cnt = 0
+    while prior:
+        now = prior.popleft()
+        if any(now[1] < x[1] for x in prior):
+            prior.append(now)
+        else:
+            cnt += 1
+            if now[0] == m:
+                print(cnt)
+                break
+
