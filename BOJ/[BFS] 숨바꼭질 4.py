@@ -1,7 +1,13 @@
 from collections import deque
-import sys
 
-sys.setrecursionlimit(1000000000)
+def route(x):
+    arr = []
+    for _ in range(dis[x] + 1):
+        arr.append(x)
+        x = move[x]
+    print(*arr[::-1])
+
+
 
 n, k = map(int, input().split())
 max_s = 100001
@@ -18,6 +24,7 @@ while q:
 
     if x == k:
         print(dis[k])
+        route(x)
         break
 
     for nx in (x-1, x+1, x*2):
@@ -26,10 +33,3 @@ while q:
             visited[nx] = True
             dis[nx] = dis[x] + 1
             move[nx] = x
-
-def print_route(n, k):
-    if n != k:
-        print_route(n, move[k])
-    print(k, end=" ")
-
-print_route(n, k)
