@@ -7,8 +7,6 @@ def route(x):
         x = move[x]
     print(*arr[::-1])
 
-
-
 n, k = map(int, input().split())
 max_s = 100001
 visited = [False]*max_s
