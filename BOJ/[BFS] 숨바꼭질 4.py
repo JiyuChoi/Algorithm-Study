@@ -31,3 +31,5 @@ while q:
             visited[nx] = True
             dis[nx] = dis[x] + 1
             move[nx] = x
+
+print(move)
