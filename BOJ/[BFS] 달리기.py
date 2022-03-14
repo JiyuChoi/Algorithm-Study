@@ -1,30 +1,34 @@
 from collections import deque
 
 n, m, k = map(int, input().split())
-graph = [list(input()) for _ in range(n)]
+graph = [list(map(str, input())) for _ in range(n)]
 
-y1, x1, y2, x2 = map(int, input().split())
-x1 -= 1; y1 -= 1; x2 -= 1; y2 -= 1
-visited = [[float('inf')] * m for _ in range(n)]
+x1, y1, x2, y2 = map(int, input().split())
+x1-=1; y1-=1; x2-=1; y2-=1
+visited = [[1004]*m for _ in range(n)]
 
-q = deque()
-q.append((x1, y1))
-visited[y1][x1] = 0
+dx = [0, 1, 0, -1]
+dy = [-1, 0 ,1, 0]
 
-while q:
-    x, y = q.popleft()
-    for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
-        nx, ny = x + dx, y + dy
-        nd = 1
-        while 0 <= nx < m and 0 <= ny < n and k >= nd and graph[ny][nx] == '.' and visited[ny][nx] > visited[y][x]:
-            if visited[ny][nx] == float('inf'):
-                q.append((nx, ny))
-                visited[ny][nx] = visited[y][x] + 1
-            nx += dx
-            ny += dy
-            nd += 1
+queue = deque()
+queue.append((x1, y1))
+visited[x1][y1] = 0
 
-if visited[y2][x2] == float('inf'):
+while queue:
+    x,y = queue.popleft()
+    for i in range(4):
+        nx = x + dx[i]
+        ny = y + dy[i]
+        nk =1
+        while 0 <= nx < n and 0 <= ny < m and graph[nx][ny] == '.'and nk <= k and visited[nx][ny] > visited[x][y]:
+            if visited[nx][ny] == 1004:
+                queue.append((nx, ny))
+                visited[nx][ny] = visited[x][y] + 1
+            nx += dx[i]
+            ny += dy[i]
+            nk += 1
+
+if visited[x2][y2]== 1004:
     print(-1)
 else:
-    print(visited[y2][x2])
+    print(visited[x2][y2])
