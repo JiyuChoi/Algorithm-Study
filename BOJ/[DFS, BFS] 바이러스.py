@@ -31,28 +31,30 @@ from collections import deque
 import sys
 input = sys.stdin.readline
 
+def bfs(v):
+    cnt = 0
+    q = deque()
+    q.append(v)
+    visited[v] = 1
+    while q:
+        now = q.popleft()
+        for next in network[now]:
+            if not visited[next]:
+                cnt += 1
+                q.append(next)
+                visited[next] = 1
+
+    return cnt
+
 n = int(input())
 m = int(input())
 
-link = [[] for _ in range(n+1)]
+network = [[] for _ in range(n+1)]
 visited = [0]*(n+1)
 
 for _ in range(m):
     x, y = map(int, input().split())
-    link[x].append(y)
-    link[y].append(x)
+    network[x].append(y)
+    network[y].append(x)
 
-q = deque()
-q.append(1)
-visited[1] = 1
-cnt = 0
-
-while q:
-    v = q.popleft()
-    for next in link[v]:
-        if 0 < next <= n and not visited[next]:
-            q.append(next)
-            visited[next] = 1
-            cnt += 1
-
-print(cnt)
+print(bfs(1))
