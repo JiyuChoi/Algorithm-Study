@@ -13,6 +13,6 @@ else:
 
         temp = n[i-1] * 10 + n[i]
         if 10 <= temp <= 26:
-            dp[i] += dp[i-2]
+            dp[i] += dp[i-2] # (dp[i-1]+dp[i-2])
 
     print(dp[l] % 1000000)
